@@ -1,0 +1,3320 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="Managed Google Play submission and publishing support for Android app owners, developers, studios, startups, and agencies." />
+
+    <!-- Primary Meta Tags -->
+    <title>Android App Publishing Desk by Prof. NOTA Inc.</title>
+    <meta
+      name="title"
+      content="Android App Publishing Desk by Prof. NOTA Inc." />
+    <meta
+      name="description"
+      content="Managed Google Play submission and publishing support for Android app owners, developers, studios, startups, and agencies." />
+    <link rel="icon" type="image/ico" href="./favicon.ico" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://playconsole.endhonesa.com/" />
+    <meta
+      property="og:title"
+      content="Android App Publishing Desk by Prof. NOTA Inc." />
+    <meta
+      property="og:description"
+      content="Managed Google Play submission and publishing support for Android app owners, developers, studios, startups, and agencies." />
+    <meta
+      property="og:image"
+      content="https://playconsole.endhonesa.com/prof-nota-inc.jpeg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://playconsole.endhonesa.com/" />
+    <meta
+      property="twitter:title"
+      content="Android App Publishing Desk by Prof. NOTA Inc." />
+    <meta
+      property="twitter:description"
+      content="Managed Google Play submission and publishing support for Android app owners, developers, studios, startups, and agencies." />
+    <meta
+      property="twitter:image"
+      content="https://playconsole.endhonesa.com/prof-nota-inc.jpeg" />
+
+    <style>
+      :root {
+        --bg: #f6f6f4;
+        --surface: #ffffff;
+        --surface-soft: #ededeb;
+        --text: #101010;
+        --muted: #5f5f5f;
+        --line: #d8d8d4;
+        --inverse: #050505;
+        --inverse-text: #ffffff;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        --radius-lg: 32px;
+        --radius-md: 20px;
+        --radius-sm: 12px;
+        --max: 1180px;
+      }
+
+      [data-theme="dark"] {
+        --bg: #050505;
+        --surface: #101010;
+        --surface-soft: #181818;
+        --text: #f5f5f0;
+        --muted: #b4b4ac;
+        --line: #30302c;
+        --inverse: #f5f5f0;
+        --inverse-text: #050505;
+        --shadow: 0 20px 70px rgba(255, 255, 255, 0.04);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background:
+          radial-gradient(
+            circle at 78% 8%,
+            rgba(0, 0, 0, 0.07),
+            transparent 28%
+          ),
+          var(--bg);
+        color: var(--text);
+        transition:
+          background 220ms ease,
+          color 220ms ease;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        background: color-mix(in srgb, var(--bg) 86%, transparent);
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--line) 70%, transparent);
+      }
+
+      main {
+        padding-top: 78px;
+      }
+
+      .nav {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 2px;
+        font-weight: 900;
+        letter-spacing: -0.055em;
+        font-size: clamp(24px, 3vw, 34px);
+        line-height: 1;
+      }
+
+      .brand small {
+        font-size: 0.38em;
+        letter-spacing: -0.02em;
+        margin-top: -5px;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn,
+      button.btn {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 13px 18px;
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: none;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-dark {
+        background: var(--inverse);
+        color: var(--inverse-text);
+        border-color: var(--inverse);
+      }
+
+      .btn-square {
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        font-size: 16px;
+      }
+
+      .language-toggle {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px;
+        display: inline-flex;
+        gap: 2px;
+        background: var(--surface);
+      }
+
+      .lang-btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 8px 10px;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 12px;
+      }
+
+      .lang-btn.active {
+        background: var(--inverse);
+        color: var(--inverse-text);
+      }
+
+      .hero {
+        padding: 84px 0 74px;
+        position: relative;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.04fr 0.96fr;
+        gap: 64px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 13px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 900;
+        margin-bottom: 18px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--text);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(48px, 7vw, 86px);
+        line-height: 0.94;
+        letter-spacing: -0.075em;
+        max-width: 780px;
+      }
+
+      .subtitle {
+        margin: 22px 0 0;
+        font-size: clamp(21px, 3vw, 34px);
+        line-height: 1.12;
+        letter-spacing: -0.045em;
+        color: var(--muted);
+        font-weight: 760;
+        max-width: 760px;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .read-more-btn {
+        display: block;
+        width: fit-content;
+        border: 0;
+        padding: 0;
+        margin: 10px 0 0 auto;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-weight: 450;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        cursor: pointer;
+      }
+
+      .read-more-btn:hover {
+        opacity: 0.72;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.58);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .modal-dialog {
+        position: relative;
+        width: min(720px, 100%);
+        max-height: min(82vh, 760px);
+        overflow-y: auto;
+        border-radius: 28px;
+        padding: 34px;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--line);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--text);
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .modal-close:hover {
+        transform: scale(0.96);
+      }
+
+      .modal-eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .modal-dialog h2 {
+        margin: 0 48px 22px 0;
+        font-size: clamp(28px, 5vw, 46px);
+        line-height: 1;
+        letter-spacing: -0.055em;
+      }
+
+      .modal-body {
+        display: grid;
+        gap: 18px;
+      }
+
+      .modal-body p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      @media (max-width: 620px) {
+        .modal-backdrop {
+          align-items: flex-end;
+          padding: 12px;
+        }
+
+        .modal-dialog {
+          width: 100%;
+          max-height: 86vh;
+          border-radius: 24px 24px 18px 18px;
+          padding: 28px 22px 24px;
+        }
+
+        .modal-close {
+          top: 14px;
+          right: 14px;
+        }
+
+        .modal-dialog h2 {
+          margin-right: 44px;
+        }
+      }
+
+      .package-modal-dialog {
+        width: min(920px, 100%);
+      }
+
+      .package-modal-price {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--text);
+        font-weight: 850;
+      }
+
+      .package-modal-price small {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+      }
+
+      .package-modal-description {
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .package-modal-section {
+        margin-top: 26px;
+      }
+
+      .package-modal-section h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: -0.035em;
+      }
+
+      .package-modal-list {
+        margin: 0;
+        padding-left: 22px;
+        color: var(--muted);
+        display: grid;
+        gap: 10px;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .package-modal-table-wrap {
+        margin-top: 24px;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .package-modal-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 620px;
+        font-size: 14px;
+      }
+
+      .package-modal-table th,
+      .package-modal-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        color: var(--muted);
+      }
+
+      .package-modal-table th {
+        color: var(--text);
+        background: var(--surface-soft);
+        font-weight: 850;
+      }
+
+      .package-modal-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .package-modal-cta {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 28px;
+      }
+
+      .package-card .btn span[data-i18n="en"],
+      .package-modal-cta .btn span[data-i18n="en"] {
+        display: inline;
+      }
+
+      .package-card .btn span[data-i18n="id"],
+      .package-modal-cta .btn span[data-i18n="id"] {
+        display: none;
+      }
+
+      html.lang-id .package-card .btn span[data-i18n="en"],
+      html.lang-id .package-modal-cta .btn span[data-i18n="en"] {
+        display: none;
+      }
+
+      html.lang-id .package-card .btn span[data-i18n="id"],
+      html.lang-id .package-modal-cta .btn span[data-i18n="id"] {
+        display: inline;
+      }
+
+      @media (max-width: 620px) {
+        .package-modal-cta {
+          justify-content: stretch;
+        }
+
+        .package-modal-cta .btn {
+          width: 100%;
+        }
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+
+      .portrait-wrap {
+        position: relative;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        isolation: isolate;
+      }
+
+      .portrait-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -5%;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(
+            circle,
+            transparent 50%,
+            color-mix(in srgb, var(--text) 6%, transparent) 51%,
+            transparent 53%
+          ),
+          repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent 0 12px,
+            color-mix(in srgb, var(--text) 10%, transparent) 13px 14px
+          );
+        opacity: 0.72;
+        z-index: -2;
+      }
+
+      .portrait-wrap::after {
+        content: "";
+        position: absolute;
+        width: 76%;
+        height: 76%;
+        border-radius: 50%;
+        background: var(--surface);
+        box-shadow:
+          inset 0 0 0 1px var(--line),
+          var(--shadow);
+        z-index: -1;
+      }
+
+      .portrait {
+        width: 72%;
+        max-width: 420px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #fff;
+        border: 10px solid color-mix(in srgb, var(--text) 8%, transparent);
+      }
+
+      .portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 50%;
+        transition: filter 220ms ease;
+      }
+
+      [data-theme="dark"] .portrait-image {
+        filter: invert(1);
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .section-soft {
+        background: color-mix(in srgb, var(--surface-soft) 66%, transparent);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 34px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(32px, 5vw, 50px);
+        line-height: 1;
+        letter-spacing: -0.065em;
+      }
+
+      .section-head p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .section-foot {
+        text-align: center;
+        max-width: 760px;
+        margin: 34px auto 0;
+      }
+
+      .section-foot p {
+        margin: 0 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .service-card {
+        min-height: 188px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        color: var(--text);
+        background: var(--surface);
+      }
+
+      .icon svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.8;
+      }
+
+      h3 {
+        margin: 18px 0 6px;
+        font-size: 18px;
+        letter-spacing: -0.035em;
+        line-height: 1.1;
+      }
+
+      .small-id {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .package-card {
+        position: relative;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        min-height: 440px;
+      }
+
+      .package-card.featured {
+        border: 2px solid var(--text);
+        transform: translateY(-8px);
+      }
+
+      .badge {
+        width: max-content;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--inverse);
+        color: var(--inverse-text);
+        font-size: 11px;
+        font-weight: 950;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .price {
+        margin: 20px 0;
+        font-size: clamp(21px, 2.47vw, 28px);
+        letter-spacing: -0.055em;
+        line-height: 1.05;
+        font-weight: 650;
+      }
+
+      .package-card ul,
+      .scope-list {
+        list-style: none;
+        margin: 25px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .package-card li,
+      .scope-list li {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: 9px;
+        align-items: start;
+      }
+
+      .check {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--inverse-text);
+        background: var(--inverse);
+        font-size: 11px;
+        font-weight: 900;
+        margin-top: 1px;
+      }
+
+      .package-card .btn {
+        margin-top: auto;
+        width: 100%;
+        border-radius: 14px;
+      }
+
+      .note {
+        text-align: center;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .retainer-detail-btn {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 22px auto 0;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        cursor: pointer;
+      }
+
+      .retainer-detail-btn:hover {
+        opacity: 0.72;
+      }
+
+      .retainer-modal-dialog {
+        width: min(820px, 100%);
+      }
+
+      .retainer-price-box {
+        display: grid;
+        gap: 6px;
+        margin: 4px 0 24px;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface-soft);
+        color: var(--text);
+      }
+
+      .retainer-price-box strong {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .retainer-price-box span {
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 850;
+        letter-spacing: -0.035em;
+      }
+
+      @media (max-width: 620px) {
+        .retainer-detail-btn {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .retainer-price-box span {
+          font-size: 16px;
+        }
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+      }
+
+      .step-card {
+        position: relative;
+        padding-top: 34px;
+      }
+
+      .step-no {
+        position: absolute;
+        top: -14px;
+        left: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--inverse);
+        color: var(--inverse-text);
+        display: grid;
+        place-items: center;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .additional-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .additional-card {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 18px;
+        align-items: start;
+        box-shadow: none;
+      }
+
+      .scope-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .scope-card h3 {
+        font-size: clamp(24px, 3.5vw, 36px);
+        margin-top: 0;
+      }
+
+      .scope-detail-btn {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 22px 0 0 auto;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        cursor: pointer;
+      }
+
+      .scope-detail-btn:hover {
+        opacity: 0.72;
+      }
+
+      .legal-modal-dialog {
+        width: min(920px, 100%);
+      }
+
+      .legal-modal-content {
+        display: grid;
+        gap: 8px;
+      }
+
+      .legal-modal-content .package-modal-section:first-child {
+        margin-top: 0;
+      }
+
+      @media (max-width: 620px) {
+        .scope-detail-btn {
+          width: 100%;
+          justify-content: flex-start;
+        }
+      }
+
+      .cta {
+        padding: 72px 0;
+        background: #030303;
+        color: #fff;
+      }
+
+      .cta-grid {
+        display: grid;
+        grid-template-columns: 150px 1fr 330px;
+        align-items: center;
+        gap: 34px;
+      }
+
+      .mini-portrait {
+        width: 144px;
+        height: 144px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #fff;
+        border: 8px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .mini-portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 50%;
+        transition: filter 220ms ease;
+      }
+
+      [data-theme="dark"] .mini-portrait-image {
+        filter: invert(1);
+      }
+
+      .mini-portrait svg {
+        width: 116%;
+        height: 116%;
+        transform: translate(-7%, 10%);
+      }
+
+      .cta h2 {
+        margin: 0;
+        font-size: clamp(38px, 6vw, 66px);
+        letter-spacing: -0.07em;
+        line-height: 0.98;
+      }
+
+      .cta p {
+        color: #c8c8c8;
+        font-size: 19px;
+        margin: 12px 0 24px;
+      }
+
+      .cta .btn {
+        border-color: rgba(255, 255, 255, 0.28);
+        background: #fff;
+        color: #000;
+      }
+
+      .contact-list {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        padding-left: 34px;
+        display: grid;
+        gap: 15px;
+        color: #e5e5e5;
+        font-weight: 650;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      footer {
+        background: #030303;
+        color: #fff;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 36px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr repeat(4, 0.7fr);
+        gap: 24px;
+      }
+
+      .footer-grid h4 {
+        margin: 0 0 12px;
+        font-size: 13px;
+        color: #fff;
+      }
+      .footer-grid a,
+      .footer-grid p {
+        display: block;
+        color: #b9b9b9;
+        margin: 8px 0;
+        font-size: 13px;
+      }
+
+      .copyright {
+        margin-top: 28px;
+        color: #8b8b8b;
+        font-size: 12px;
+      }
+
+      [data-i18n="id"] {
+        display: none;
+      }
+      html.lang-id [data-i18n="en"] {
+        display: none;
+      }
+      html.lang-id [data-i18n="id"] {
+        display: inline;
+      }
+      html.lang-id p[data-i18n="id"],
+      html.lang-id div[data-i18n="id"],
+      html.lang-id span[data-i18n="id"] {
+        display: block;
+      }
+
+      .package-card span[data-i18n="en"] {
+        display: inline;
+      }
+
+      .package-card span[data-i18n="id"] {
+        display: none;
+      }
+
+      html.lang-id .package-card span[data-i18n="en"] {
+        display: none;
+      }
+
+      html.lang-id .package-card span[data-i18n="id"] {
+        display: inline;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-grid,
+        .scope-grid,
+        .cta-grid {
+          grid-template-columns: 1fr;
+        }
+        .portrait-wrap {
+          max-width: 560px;
+          margin: 20px auto 0;
+        }
+        .services-grid,
+        .packages-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .process-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .additional-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-list {
+          border-left: 0;
+          padding-left: 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .container {
+          width: min(100% - 26px, var(--max));
+        }
+        .nav {
+          height: 68px;
+          gap: 12px;
+        }
+        .brand {
+          font-size: 24px;
+        }
+        .hide-mobile {
+          display: none;
+        }
+        .hero {
+          padding: 48px 0;
+        }
+        h1 {
+          font-size: 48px;
+        }
+        .hero-actions {
+          flex-direction: column;
+        }
+        .hero-actions .btn {
+          width: 100%;
+        }
+        .services-grid,
+        .packages-grid,
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+        .package-card.featured {
+          transform: none;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="container nav">
+          <a href="#top" class="brand" aria-label="Prof. NOTA Inc."
+            >Prof. NOTA<small>Inc.</small></a
+          >
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#services"
+              ><span data-i18n="en">Services</span
+              ><span data-i18n="id">Layanan</span></a
+            >
+            <a href="#packages"
+              ><span data-i18n="en">Packages</span
+              ><span data-i18n="id">Paket</span></a
+            >
+            <a href="#process"
+              ><span data-i18n="en">Process</span
+              ><span data-i18n="id">Proses</span></a
+            >
+            <a href="#contact"
+              ><span data-i18n="en">Contact</span
+              ><span data-i18n="id">Kontak</span></a
+            >
+          </nav>
+          <div class="nav-actions">
+            <div class="language-toggle" aria-label="Language toggle">
+              <button class="lang-btn active" data-lang="en">EN</button>
+              <button class="lang-btn" data-lang="id">ID</button>
+            </div>
+            <button
+              class="btn btn-square"
+              id="themeToggle"
+              aria-label="Toggle dark and light theme">
+              ◐
+            </button>
+            <a class="btn btn-dark hide-mobile" href="#contact">
+              <span data-i18n="en">Book a Consultation</span
+              ><span data-i18n="id">Konsultasi</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <div class="eyebrow">
+                <span data-i18n="en">Android App Publishing Desk</span>
+                <span data-i18n="id">Meja Penerbitan Aplikasi Android</span>
+              </div>
+              <h1>
+                <span data-i18n="en"
+                  >Managed Google Play Submission & Publishing</span
+                ><span data-i18n="id"
+                  >Pengajuan & Penerbitan di Google Play</span
+                >
+              </h1>
+              <p class="subtitle" data-i18n="en">
+                Professional support for Android app submission, testing,
+                compliance, and production release.
+              </p>
+              <p class="subtitle" data-i18n="id">
+                Dukungan profesional untuk pengajuan, pengujian, kepatuhan, dan
+                rilis produksi aplikasi Android.
+              </p>
+              <p class="lead" data-i18n="en">
+                We help developers, studios, startups, agencies, and app owners
+                publish Android apps to Google Play through managed submission,
+                testing coordination, compliance support, rejection analysis,
+                resubmission, and production release assistance.
+              </p>
+              <p class="lead" data-i18n="id">
+                Kami membantu para pengembang, studio, perusahaan rintisan,
+                agensi, dan pemilik aplikasi untuk menerbitkan aplikasi Android
+                ke Google Play melalui pengajuan, pengujian, kepatuhan, analisis
+                penolakan, pengajuan ulang, dan rilis produksi.
+              </p>
+              <button
+                class="read-more-btn"
+                type="button"
+                id="openReadMoreModal">
+                <span data-i18n="en">Read More</span>
+                <span data-i18n="id">Selengkapnya</span>
+              </button>
+              <div class="hero-actions">
+                <a class="btn btn-dark" href="#contact"
+                  >✦ <span data-i18n="en">Start Your Submission</span
+                  ><span data-i18n="id">Mulai Pengajuan Anda</span></a
+                >
+                <a class="btn" href="#services"
+                  >◉ <span data-i18n="en">View Services</span
+                  ><span data-i18n="id">Lihat Layanan</span></a
+                >
+              </div>
+            </div>
+            <div class="portrait-wrap" aria-hidden="true">
+              <div class="portrait">
+                <img
+                  src="./1.47.png"
+                  alt="Prof. NOTA portrait"
+                  class="portrait-image" />
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-backdrop" id="readMoreModal" aria-hidden="true">
+            <div
+              class="modal-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="readMoreModalTitle">
+              <button
+                class="modal-close"
+                type="button"
+                id="closeReadMoreModal"
+                aria-label="Close modal">
+                x
+              </button>
+
+              <div class="eyebrow modal-eyebrow">
+                <span data-i18n="en">About the Services</span>
+                <span data-i18n="id">Tentang Layanan Ini</span>
+              </div>
+
+              <h2 id="readMoreModalTitle">
+                <span data-i18n="en">Android App Publishing</span
+                ><span data-i18n="id">Penerbitan Aplikasi Android</span>
+              </h2>
+
+              <div class="modal-body">
+                <p data-i18n="en">
+                  Android App Publishing Desk by Prof. NOTA is a service unit
+                  under Prof. NOTA Inc. that helps developers, studios,
+                  agencies, startups, and digital product owners publish Android
+                  applications to the Google Play Store.
+                </p>
+                <p data-i18n="id">
+                  Meja Penerbitan Aplikasi Android oleh Prof. NOTA adalah unit
+                  layanan di bawah Prof. NOTA Inc. yang membantu pengembang,
+                  studio, agensi, perusahaan rintisan, dan pemilik produk
+                  digital dalam proses publikasi aplikasi Android ke Google Play
+                  Store.
+                </p>
+
+                <p data-i18n="en">
+                  This service is designed for parties who already have a mobile
+                  application but need professional support throughout the
+                  submission process, testing, Play Console form completion,
+                  rejection handling, and assistance until the application can
+                  enter the production stage.
+                </p>
+                <p data-i18n="id">
+                  Layanan ini dirancang untuk pihak yang sudah memiliki aplikasi
+                  selular, tetapi membutuhkan dukungan profesional dalam proses
+                  pengajuan, pengujian, pengisian formulir Play Console,
+                  penanganan penolakan, dan pendampingan hingga aplikasi dapat
+                  masuk ke tahap produksi.
+                </p>
+
+                <p data-i18n="en">
+                  Android App Publishing Desk by Prof. NOTA does not merely help
+                  upload application files. It helps manage the publishing
+                  process in a more organized, secure, and structured way.
+                </p>
+                <p data-i18n="id">
+                  Meja Penerbitan Aplikasi Android oleh Prof. NOTA bukan hanya
+                  membantu mengunggah berkas aplikasi, tetapi membantu mengelola
+                  proses publikasi secara lebih rapi, aman, dan terstruktur.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="section section-soft">
+          <div class="container">
+            <div class="section-head">
+              <h2>
+                <span data-i18n="en">Our Core Services</span
+                ><span data-i18n="id">Layanan Utama Kami</span>
+              </h2>
+              <p data-i18n="en">
+                A managed workflow for Play Console submission, testing,
+                compliance, and production release.
+              </p>
+              <p data-i18n="id">
+                Alur kerja terkelola untuk pengajuan, pengujian, kepatuhan, dan
+                rilis produksi di Play Console.
+              </p>
+            </div>
+            <div class="services-grid" id="serviceGrid"></div>
+            <div class="section-foot">
+              <p data-i18n="en">
+                In this cooperation, we acts as the publishing operator and
+                submission manager, not as the application owner, not as the
+                main developer, and not as the party responsible for the
+                application's business, transactions, user data, or customer
+                support.
+              </p>
+              <p data-i18n="id">
+                Dalam kerja sama ini, kami bertindak sebagai operator penerbitan
+                dan pengelola pengajuan, bukan sebagai pemilik aplikasi, bukan
+                sebagai pengembang utama, dan bukan sebagai pihak yang
+                bertanggung jawab atas bisnis aplikasi, transaksi, data
+                pengguna, atau dukungan pelanggan.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="packages" class="section">
+          <div class="container">
+            <div class="section-head">
+              <h2>
+                <span data-i18n="en">Service Packages</span
+                ><span data-i18n="id">Paket Layanan</span>
+              </h2>
+              <p>
+                <span data-i18n="en"
+                  >Clear packages for different levels of publishing
+                  support.</span
+                ><span data-i18n="id"
+                  >Paket yang jelas untuk berbagai tingkat dukungan
+                  penerbitan.</span
+                >
+              </p>
+            </div>
+            <div class="packages-grid" id="packageGrid"></div>
+            <div class="section-foot">
+              <p class="note" data-i18n="en">
+                Pricing may vary based on app complexity and requirements.
+              </p>
+              <p class="note" data-i18n="id">
+                Harga dapat bervariasi tergantung kompleksitas dan kebutuhan
+                aplikasi.
+              </p>
+              <p class="note" data-i18n="en">
+                After the application enters production and released, each new
+                app bundle update is charged separately.
+              </p>
+              <p class="note" data-i18n="id">
+                Setelah aplikasi masuk tahap produksi dan sudah dirilis, setiap
+                pembaruan aplikasi akan dikenakan biaya terpisah.
+              </p>
+              <div class="package-modal-table-wrap" data-i18n="en">
+                <table class="package-modal-table">
+                  <thead>
+                    <tr>
+                      <th>Type of Update</th>
+                      <th>Fee</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Simple AAB update upload</td>
+                      <td>IDR 2,5-3,5 Million</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Changes to store listing, data safety, privacy, or
+                        policy forms
+                      </td>
+                      <td>IDR 5-8 Million</td>
+                    </tr>
+                    <tr>
+                      <td>Rejection handling per update cycle</td>
+                      <td>IDR 3,5-7,5 Million</td>
+                    </tr>
+                    <tr>
+                      <td>Urgent, weekend, or emergency release</td>
+                      <td>Additional 50%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="package-modal-table-wrap" data-i18n="id">
+                <table class="package-modal-table">
+                  <thead>
+                    <tr>
+                      <th>Jenis Pembaruan</th>
+                      <th>Biaya</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pembaruan AAB sederhana</td>
+                      <td>IDR 2,5-3,5 Juta</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Perubahan informasi aplikasi, keamanan data, privasi,
+                        atau formulir kebijakan
+                      </td>
+                      <td>IDR 5-8 Juta</td>
+                    </tr>
+                    <tr>
+                      <td>Penanganan penolakan per siklus pembaruan</td>
+                      <td>IDR 3,5-7,5 Juta</td>
+                    </tr>
+                    <tr>
+                      <td>Rilis mendesak, akhir pekan, atau darurat</td>
+                      <td>Tambahan 50%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="modal-backdrop"
+            id="packageDetailModal"
+            aria-hidden="true">
+            <div
+              class="modal-dialog package-modal-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="packageDetailTitle">
+              <button
+                class="modal-close"
+                type="button"
+                id="closePackageDetailModal"
+                aria-label="Close package detail modal">
+                x
+              </button>
+
+              <div class="eyebrow modal-eyebrow" id="packageDetailBadge"></div>
+
+              <h2 id="packageDetailTitle"></h2>
+
+              <div class="package-modal-price" id="packageDetailPrice"></div>
+
+              <p
+                class="package-modal-description"
+                id="packageDetailDescription"></p>
+
+              <div id="packagePaymentScheme"></div>
+
+              <div id="packageStageTable"></div>
+
+              <div class="package-modal-section">
+                <h3>
+                  <span data-i18n="en">Scope</span>
+                  <span data-i18n="id">Ruang Lingkup</span>
+                </h3>
+                <ol class="package-modal-list" id="packageDetailScope"></ol>
+              </div>
+
+              <div class="package-modal-section">
+                <h3>
+                  <span data-i18n="en">Limitations</span>
+                  <span data-i18n="id">Batasan</span>
+                </h3>
+                <ol
+                  class="package-modal-list"
+                  id="packageDetailLimitations"></ol>
+              </div>
+
+              <div class="package-modal-cta">
+                <a
+                  class="btn btn-dark"
+                  href="#contact"
+                  id="packageDetailContact">
+                  <span data-i18n="en">Discuss This Package</span>
+                  <span data-i18n="id">Diskusikan Paket Ini</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="process" class="section section-soft">
+          <div class="container">
+            <div class="section-head">
+              <h2>
+                <span data-i18n="en">How It Works</span
+                ><span data-i18n="id">Bagaimana Prosesnya</span>
+              </h2>
+            </div>
+            <div class="process-grid" id="processGrid"></div>
+            <div class="section-foot">
+              <p class="note" data-i18n="en">
+                For clients who need routine management, a monthly retainer is
+                available as optional package.
+              </p>
+              <p class="note" data-i18n="id">
+                Bagi klien yang membutuhkan pengelolaan rutin, tersedia paket
+                opsional berupa biaya bulanan tetap.
+              </p>
+
+              <button
+                class="retainer-detail-btn"
+                type="button"
+                id="openRetainerModal">
+                <span data-i18n="en">Read More About Optional Retainer</span>
+                <span data-i18n="id">Baca Detail Layanan Opsional</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="modal-backdrop" id="retainerModal" aria-hidden="true">
+            <div
+              class="modal-dialog retainer-modal-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="retainerModalTitle">
+              <button
+                class="modal-close"
+                type="button"
+                id="closeRetainerModal"
+                aria-label="Close optional retainer modal">
+                x
+              </button>
+
+              <div class="eyebrow modal-eyebrow">
+                <span data-i18n="en">Optional Retainer</span>
+                <span data-i18n="id">Retainer Opsional</span>
+              </div>
+
+              <h2 id="retainerModalTitle">
+                <span data-i18n="en">Optional Retainer</span>
+                <span data-i18n="id">Layanan Opsional</span>
+              </h2>
+
+              <p class="package-modal-description" data-i18n="en">
+                For clients who need routine management, a monthly retainer is
+                available.
+              </p>
+
+              <p class="package-modal-description" data-i18n="id">
+                Untuk klien yang membutuhkan pengelolaan rutin, tersedia layanan
+                bulanan.
+              </p>
+
+              <div class="retainer-price-box">
+                <strong>Retainer</strong>
+                <span data-i18n="en">
+                  IDR 3,500,000 - IDR 7,500,000 per application per month
+                </span>
+                <span data-i18n="id">
+                  IDR 3.500.000 - IDR 7.500.000 per aplikasi per bulan
+                </span>
+              </div>
+
+              <div class="package-modal-section">
+                <h3>
+                  <span data-i18n="en">Retainer Includes</span>
+                  <span data-i18n="id">Layanan Mencakup</span>
+                </h3>
+
+                <ol class="package-modal-list" data-i18n="en">
+                  <li>
+                    Basic monitoring of application status in Play Console.
+                  </li>
+                  <li>Reading important notifications from Google Play.</li>
+                  <li>Light update coordination.</li>
+                  <li>Reminders if there is a policy deadline.</li>
+                  <li>Light consultation related to submission and updates.</li>
+                </ol>
+
+                <ol class="package-modal-list" data-i18n="id">
+                  <li>Pemantauan dasar status aplikasi di Play Console.</li>
+                  <li>Membaca notifikasi penting dari Google Play.</li>
+                  <li>Koordinasi pembaruan ringan.</li>
+                  <li>Pengingat jika terdapat tenggat waktu kebijakan.</li>
+                  <li>Konsultasi ringan terkait pengajuan dan pembaruan.</li>
+                </ol>
+              </div>
+
+              <div class="package-modal-section">
+                <h3>
+                  <span data-i18n="en">Retainer Does Not Include</span>
+                  <span data-i18n="id">Layanan Tidak Mencakup</span>
+                </h3>
+
+                <ol class="package-modal-list" data-i18n="en">
+                  <li>Major update uploads.</li>
+                  <li>Heavy rejection handling.</li>
+                  <li>Complex privacy policy or data safety changes.</li>
+                  <li>Technical fixes to the application.</li>
+                  <li>Customer support for application users.</li>
+                </ol>
+
+                <ol class="package-modal-list" data-i18n="id">
+                  <li>Upload pembaruan besar.</li>
+                  <li>Penanganan penolakan yang berat.</li>
+                  <li>
+                    Perubahan kompleks pada kebijakan privasi atau keamanan
+                    data.
+                  </li>
+                  <li>Perbaikan teknis pada aplikasi.</li>
+                  <li>Dukungan pelanggan untuk pengguna aplikasi.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="additional" class="section">
+          <div class="container">
+            <div class="section-head">
+              <h2>
+                <span data-i18n="en">Additional Services</span
+                ><span data-i18n="id">Layanan Tambahan</span>
+              </h2>
+              <p>
+                <span data-i18n="en"
+                  >In addition to the main Google Play submission and publishing
+                  operation services, and for apps that need deeper growth,
+                  operational, or enterprise support, we may also provide
+                  advanced services for mobile applications that want to grow
+                  more seriously after entering the market, because we can
+                  design a dedicated scope through further discussion.</span
+                ><span data-i18n="id"
+                  >Selain layanan utama pengajuan dan penerbitan di Google Play,
+                  dan untuk aplikasi yang membutuhkan dukungan pertumbuhan,
+                  operasional, atau perusahaan yang lebih mendalam, kami juga
+                  dapat menyediakan layanan lanjutan untuk aplikasi seluler yang
+                  ingin berkembang lebih serius setelah memasuki pasar, karena
+                  kami dapat merancang cakupan khusus melalui diskusi lebih
+                  lanjut.</span
+                >
+              </p>
+            </div>
+            <div class="additional-grid" id="additionalGrid"></div>
+            <div class="section-foot">
+              <p data-i18n="en">
+                The additional services above are not included in the standard
+                submission packages. For these needs, the client must have a
+                further discussion so that the scope, timeline, risks, and costs
+                can be specifically arranged according to the application's
+                requirements.
+              </p>
+              <p data-i18n="id">
+                Layanan tambahan di atas tidak termasuk dalam paket pengajuan
+                standar. Untuk kebutuhan ini, klien harus melakukan diskusi
+                lebih lanjut agar ruang lingkup, jangka waktu, risiko, dan biaya
+                dapat diatur secara spesifik sesuai dengan persyaratan aplikasi.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="positioning" class="section section-soft">
+          <div class="container">
+            <div class="section-head">
+              <h2>
+                <span data-i18n="en">Short Positioning</span
+                ><span data-i18n="id">Penempatan Posisi</span>
+              </h2>
+              <p>
+                <span data-i18n="en"
+                  >Android App Publishing Desk by Prof. NOTA helps mobile app
+                  owners, developers, agencies, and startups publish Android
+                  applications to Google Play Store through a managed submission
+                  process, including Play Console setup, testing coordination,
+                  compliance form completion, rejection analysis, resubmission
+                  support, and production release assistance.</span
+                ><span data-i18n="id"
+                  >Android App Publishing Desk oleh Prof. NOTA membantu pemilik
+                  aplikasi seluler, pengembang, agensi, dan perusahaan rintisan
+                  untuk menerbitkan aplikasi Android ke Google Play Store
+                  melalui proses pengajuan yang terkelola, termasuk pengaturan
+                  Play Console, koordinasi pengujian, pengisian formulir
+                  kepatuhan, analisis penolakan, dukungan pengajuan ulang, dan
+                  bantuan rilis produksi.</span
+                >
+              </p>
+            </div>
+            <div class="scope-grid">
+              <div class="card scope-card">
+                <h3>
+                  <span data-i18n="en">Client Scope</span
+                  ><span data-i18n="id">Ruang Lingkup Klien</span>
+                </h3>
+                <ul class="scope-list" id="clientScope"></ul>
+              </div>
+              <div class="card scope-card">
+                <h3>
+                  <span data-i18n="en">Our Scope</span
+                  ><span data-i18n="id">Ruang Lingkup Kami</span>
+                </h3>
+                <ul class="scope-list" id="ourScope"></ul>
+                <button
+                  class="scope-detail-btn"
+                  type="button"
+                  id="openOurScopeModal">
+                  <span data-i18n="en">Read More About Our Scope</span>
+                  <span data-i18n="id">Baca Detail Ruang Lingkup Kami</span>
+                </button>
+              </div>
+            </div>
+            <div class="section-foot">
+              <p class="note" data-i18n="en">
+                For new clients who want assistance until the application enters
+                production, the most recommended package is Package B. For
+                clients who need a more formal and staged payment structure, the
+                recommended package is Package C.
+              </p>
+              <p class="note" data-i18n="id">
+                Untuk klien yang menginginkan bantuan hingga tahap produksi,
+                paket yang direkomendasikan adalah Paket B. Untuk klien yang
+                membutuhkan struktur pembayaran yang formal dan bertahap, paket
+                yang direkomendasikan adalah Paket C.
+              </p>
+            </div>
+          </div>
+
+          <div class="modal-backdrop" id="ourScopeModal" aria-hidden="true">
+            <div
+              class="modal-dialog legal-modal-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="ourScopeModalTitle">
+              <button
+                class="modal-close"
+                type="button"
+                id="closeOurScopeModal"
+                aria-label="Close our scope detail modal">
+                x
+              </button>
+
+              <div class="eyebrow modal-eyebrow">
+                <span data-i18n="en">Our Scope Details</span>
+                <span data-i18n="id">Detail Ruang Lingkup Kami</span>
+              </div>
+
+              <h2 id="ourScopeModalTitle">
+                <span data-i18n="en">Limitation of Liability & Rights</span>
+                <span data-i18n="id">Batasan Tanggung Jawab & Hak</span>
+              </h2>
+
+              <div class="legal-modal-content" data-i18n="en">
+                <div class="package-modal-section">
+                  <h3>Prof. NOTA Inc. Limitation of Liability</h3>
+                  <p class="package-modal-description">
+                    Prof. NOTA Inc. is not responsible for:
+                  </p>
+                  <ol class="package-modal-list">
+                    <li>
+                      The legality of the business, products, or services inside
+                      the application.
+                    </li>
+                    <li>The accuracy of the data provided by the client.</li>
+                    <li>An inaccurate privacy policy.</li>
+                    <li>
+                      Misuse of user data by the application or the client’s
+                      backend.
+                    </li>
+                    <li>
+                      Transaction, refund, cancellation, booking, and customer
+                      support issues.
+                    </li>
+                    <li>Technical bugs in the application.</li>
+                    <li>
+                      Approval failure caused by policy violations from the
+                      application, content, or client business side.
+                    </li>
+                    <li>
+                      Suspension or rejection caused by false information,
+                      hidden features, or application non-compliance with
+                      policy.
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="package-modal-section">
+                  <h3>Rights of Prof. NOTA Inc.</h3>
+                  <p class="package-modal-description">
+                    Prof. NOTA Inc. has the right to:
+                  </p>
+                  <ol class="package-modal-list">
+                    <li>Delay submission if the data is incomplete.</li>
+                    <li>Reject high-risk applications.</li>
+                    <li>Request bundle revisions before submission.</li>
+                    <li>
+                      Request legal page improvements before completing Play
+                      Console forms.
+                    </li>
+                    <li>
+                      Stop the process if there is an indication of policy
+                      violation.
+                    </li>
+                    <li>
+                      Remove or unpublish an application if it endangers the
+                      publisher account.
+                    </li>
+                    <li>Charge additional fees if the scope changes.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="legal-modal-content" data-i18n="id">
+                <div class="package-modal-section">
+                  <h3>Batasan Tanggung Jawab Prof. NOTA Inc.</h3>
+                  <p class="package-modal-description">
+                    Prof. NOTA Inc. tidak bertanggung jawab atas:
+                  </p>
+                  <ol class="package-modal-list">
+                    <li>
+                      Legalitas bisnis, produk, atau layanan yang terdapat di
+                      dalam aplikasi.
+                    </li>
+                    <li>Keakuratan data yang diberikan oleh klien.</li>
+                    <li>Kebijakan privasi yang tidak akurat.</li>
+                    <li>
+                      Penyalahgunaan data pengguna oleh aplikasi atau sistem
+                      milik klien.
+                    </li>
+                    <li>
+                      Masalah transaksi, pengembalian dana, pembatalan,
+                      pemesanan, dan dukungan pelanggan.
+                    </li>
+                    <li>Kesalahan teknis pada aplikasi.</li>
+                    <li>
+                      Kegagalan persetujuan yang disebabkan oleh pelanggaran
+                      kebijakan dari sisi aplikasi, konten, atau bisnis klien.
+                    </li>
+                    <li>
+                      Suspensi atau penolakan yang disebabkan oleh informasi
+                      palsu, fitur tersembunyi, atau ketidaksesuaian aplikasi
+                      dengan kebijakan.
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="package-modal-section">
+                  <h3>Hak Prof. NOTA Inc.</h3>
+                  <p class="package-modal-description">
+                    Prof. NOTA Inc. berhak untuk:
+                  </p>
+                  <ol class="package-modal-list">
+                    <li>Menunda pengajuan jika data belum lengkap.</li>
+                    <li>Menolak aplikasi berisiko tinggi.</li>
+                    <li>Meminta revisi aplikasi sebelum pengajuan.</li>
+                    <li>
+                      Meminta perbaikan halaman legal sebelum mengisi formulir
+                      Play Console.
+                    </li>
+                    <li>
+                      Menghentikan proses jika terdapat indikasi pelanggaran
+                      kebijakan.
+                    </li>
+                    <li>
+                      Hapus atau batalkan publikasi aplikasi jika membahayakan
+                      akun penerbit.
+                    </li>
+                    <li>Menagih biaya tambahan jika ruang lingkup berubah.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="cta">
+          <div class="container cta-grid">
+            <div class="mini-portrait" aria-hidden="true">
+              <img
+                src="./1.47.png"
+                alt="Prof. NOTA portrait"
+                class="mini-portrait-image" />
+            </div>
+            <div>
+              <h2>
+                <span data-i18n="en">Publish with confidence.</span
+                ><span data-i18n="id">Rilis dengan percaya diri.</span>
+              </h2>
+              <p data-i18n="en">
+                Discuss your app, submission status, and publishing needs on
+                Android App Publishing Desk by Prof. NOTA.
+              </p>
+              <p data-i18n="id">
+                Diskusikan aplikasi, status pengajuan, dan kebutuhan penerbitan
+                Anda di Meja Penerbitan Aplikasi Android oleh Prof. NOTA.
+              </p>
+              <a
+                class="btn"
+                href="https://wa.me/message/DPRNCTJA2Q52L1"
+                target="_blank"
+                >☏ <span data-i18n="en">Discuss Your App</span
+                ><span data-i18n="id">Diskusikan Aplikasi Anda</span></a
+              >
+            </div>
+            <div class="contact-list">
+              <div class="contact-item">◎ nota@endhonesa.com</div>
+              <div class="contact-item">◎ +62 856-316-0756</div>
+              <div class="contact-item">◎ playconsole.endhonesa.com</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="brand">Prof. NOTA<small>Inc.</small></div>
+              <p>
+                <span data-i18n="en"
+                  >Android App Publishing Desk by Prof. NOTA.</span
+                ><span data-i18n="id"
+                  >Meja Penerbitan Aplikasi Android oleh Prof. NOTA.</span
+                >
+              </p>
+            </div>
+            <div>
+              <h4>
+                <span data-i18n="en">The Inc.</span>
+                <span data-i18n="id">Perusahaan</span>
+              </h4>
+
+              <a
+                href="https://nota.endhonesa.com/profile"
+                target="_blank"
+                rel="noopener noreferrer">
+                <span data-i18n="en">About Us</span>
+                <span data-i18n="id">Tentang Kami</span>
+              </a>
+
+              <a
+                href="https://nota.endhonesa.com/contact"
+                target="_blank"
+                rel="noopener noreferrer">
+                <span data-i18n="en">Track Us</span>
+                <span data-i18n="id">Lacak Kami</span>
+              </a>
+            </div>
+
+            <div>
+              <h4>
+                <span data-i18n="en">Services</span>
+                <span data-i18n="id">Layanan</span>
+              </h4>
+
+              <a href="#services">
+                <span data-i18n="en">The Core</span>
+                <span data-i18n="id">Layanan Utama</span>
+              </a>
+
+              <a href="#packages">
+                <span data-i18n="en">Packages</span>
+                <span data-i18n="id">Paket Layanan</span>
+              </a>
+
+              <a href="#additional">
+                <span data-i18n="en">Additional</span>
+                <span data-i18n="id">Layanan Tambahan</span>
+              </a>
+            </div>
+
+            <div>
+              <h4>
+                <span data-i18n="en">Resources</span>
+                <span data-i18n="id">Sumber</span>
+              </h4>
+
+              <a
+                href="https://baca.endhonesa.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                <span data-i18n="en">The .MDs</span>
+                <span data-i18n="id">Berkas .MD</span>
+              </a>
+
+              <a
+                href="https://docs.endhonesa.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                <span data-i18n="en">The Docs.</span>
+                <span data-i18n="id">Dokumentasi</span>
+              </a>
+            </div>
+
+            <div>
+              <h4>
+                <span data-i18n="en">Legal</span>
+                <span data-i18n="id">Hukum</span>
+              </h4>
+
+              <a href="#positioning">
+                <span data-i18n="en">Privacy Policy</span>
+                <span data-i18n="id">Kebijakan Privasi</span>
+              </a>
+
+              <a href="#positioning">
+                <span data-i18n="en">Terms of Service</span>
+                <span data-i18n="id">Ketentuan Layanan</span>
+              </a>
+            </div>
+          </div>
+          <div class="copyright">
+            Copyleft © <span id="currentMonthYear"></span> Prof. NOTA Inc.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const services = [
+        {
+          title: {
+            en: "Play Console Setup",
+            id: "Pengaturan Play Console",
+          },
+          subtitle: {
+            en: "Google Play Console Setup",
+            id: "Pengaturan Google Play Console",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "AAB Submission",
+            id: "Pengajuan AAB",
+          },
+          subtitle: {
+            en: "Android App Bundle Submission",
+            id: "Pengajuan Paket Aplikasi Android",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "Android App Testing",
+            id: "Pengujian Aplikasi Android",
+          },
+          subtitle: {
+            en: "Internal & Closed Testing Setup",
+            id: "Pengujian Internal & Tertutup",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "Tester Coordination",
+            id: "Koordinasi Penguji",
+          },
+          subtitle: {
+            en: "Tester Operation & Coordination",
+            id: "Operasi & Koordinasi Penguji",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "App Form Completion",
+            id: "Pengisian Formulir Aplikasi",
+          },
+          subtitle: {
+            en: "Content & Compliance Completion",
+            id: "Penyelesaian Konten & Kepatuhan",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "Rejection Analysis",
+            id: "Analisis Penolakan",
+          },
+          subtitle: {
+            en: "Play Console Rejection Analysis",
+            id: "Analisis Penolakan Play Console",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "Resubmission Support",
+            id: "Dukungan Pengajuan Ulang",
+          },
+          subtitle: {
+            en: "AAB Resubmission Support",
+            id: "Dukungan Pengajuan Ulang AAB",
+          },
+          symbol: "☑",
+        },
+        {
+          title: {
+            en: "Production Release",
+            id: "Rilis Produksi",
+          },
+          subtitle: {
+            en: "Production Release Assistance",
+            id: "Pendampingan Rilis Produksi",
+          },
+          symbol: "☑",
+        },
+      ];
+
+      const packages = [
+        {
+          key: "packageA",
+          label: {
+            en: "Package A",
+            id: "Paket A",
+          },
+          title: {
+            en: "Submission Setup",
+            id: "Pengaturan Pengajuan",
+          },
+          price: {
+            en: "15 Million",
+            id: "15 Juta",
+          },
+          bullets: [
+            {
+              en: "Play Console Setup",
+              id: "Pengaturan Play Console",
+            },
+            {
+              en: "AAB Submission",
+              id: "Pengajuan AAB",
+            },
+            {
+              en: "Internal Testing Link",
+              id: "Tautan Pengujian Internal",
+            },
+            {
+              en: "Basic App Information",
+              id: "Informasi Dasar Aplikasi",
+            },
+          ],
+        },
+        {
+          key: "packageB",
+          label: {
+            en: "Package B",
+            id: "Paket B",
+          },
+          title: {
+            en: "Production Submission",
+            id: "Pengajuan Produksi",
+          },
+          price: {
+            en: "35 Million",
+            id: "35 Juta",
+          },
+          bullets: [
+            {
+              en: "Includes Package A",
+              id: "Termasuk Paket A",
+            },
+            {
+              en: "Closed Testing Link",
+              id: "Tautan Pengujian Tertutup",
+            },
+            {
+              en: "12-20 Tester Coordination",
+              id: "Koordinasi 12-20 Penguji",
+            },
+            {
+              en: "Production Submission",
+              id: "Pengajuan Produksi",
+            },
+          ],
+          featured: true,
+        },
+        {
+          key: "packageC",
+          label: {
+            en: "Package C",
+            id: "Paket C",
+          },
+          title: {
+            en: "Stage-Based Package",
+            id: "Paket Bertahap",
+          },
+          price: {
+            en: "40 Million",
+            id: "40 Juta",
+          },
+          bullets: [
+            {
+              en: "Everything in Package B",
+              id: "Semua di Paket B",
+            },
+            {
+              en: "Stage-Based Deliverables",
+              id: "Hasil Berbasis Tahapan",
+            },
+            {
+              en: "Rejection Analysis",
+              id: "Analisis Penolakan",
+            },
+            {
+              en: "Resubmission Support",
+              id: "Pengajuan Ulang",
+            },
+          ],
+        },
+        {
+          key: "packageD",
+          label: {
+            en: "Package D",
+            id: "Paket D",
+          },
+          title: {
+            en: "Publishing Operator",
+            id: "Operator Penerbitan",
+          },
+          price: {
+            en: "50-75 Million",
+            id: "50-75 Juta",
+          },
+          bullets: [
+            {
+              en: "End-to-End Workflow",
+              id: "Alur Ujung-ke-Ujung",
+            },
+            {
+              en: "Dedicated Operator",
+              id: "Operator Khusus",
+            },
+            {
+              en: "Advanced Support",
+              id: "Dukungan Lanjutan",
+            },
+            {
+              en: "Release & Follow-Up",
+              id: "Rilis & Tindak Lanjut",
+            },
+          ],
+        },
+      ];
+
+      const packageDetails = {
+        packageA: {
+          badge: {
+            en: "Package A",
+            id: "Paket A",
+          },
+          title: {
+            en: "Submission Setup Only",
+            id: "Pengaturan Pengajuan Saja",
+          },
+          price: {
+            en: "IDR 15,000,000 per application",
+            id: "IDR 15.000.000 per aplikasi",
+          },
+          description: {
+            en: "This package is suitable for developers or application owners who only need initial setup assistance in Google Play Console.",
+            id: "Paket ini cocok untuk pengembang atau pemilik aplikasi yang hanya membutuhkan bantuan awal untuk menyiapkan aplikasi di Google Play Console.",
+          },
+          scope: [
+            {
+              en: "Create the app record in Google Play Console.",
+              id: "Mencatatkan aplikasi di Google Play Console.",
+            },
+            {
+              en: "Check the package name or applicationId.",
+              id: "Memeriksa nama paket atau applicationId.",
+            },
+            {
+              en: "Check the version code and version name.",
+              id: "Memeriksa kode versi dan nama versinya.",
+            },
+            {
+              en: "Upload the Android app bundle.",
+              id: "Mengunggah paket aplikasi Android.",
+            },
+            {
+              en: "Set up internal testing.",
+              id: "Menyiapkan pengujian internal.",
+            },
+            {
+              en: "Create the testing link.",
+              id: "Membuat tautan pengujian.",
+            },
+            {
+              en: "Fill in the basic application information.",
+              id: "Mengisi informasi dasar aplikasi.",
+            },
+            {
+              en: "Provide a checklist of remaining requirements that must still be provided by the client.",
+              id: "Memberikan daftar periksa persyaratan yang masih harus disediakan oleh klien.",
+            },
+          ],
+          limitations: [
+            {
+              en: "Does not include 14-day closed testing.",
+              id: "Tidak termasuk pengujian tertutup 14 hari.",
+            },
+            {
+              en: "Does not include tester provision.",
+              id: "Tidak termasuk penyediaan penguji.",
+            },
+            {
+              en: "Does not include production access request.",
+              id: "Tidak termasuk permintaan akses produksi.",
+            },
+            {
+              en: "Does not include rejection handling.",
+              id: "Tidak termasuk penanganan penolakan.",
+            },
+            {
+              en: "Does not include assistance until production approval.",
+              id: "Tidak termasuk bantuan hingga persetujuan produksi.",
+            },
+            {
+              en: "Does not include the creation of a privacy policy, account deletion page, or legal documents.",
+              id: "Tidak termasuk pembuatan kebijakan privasi, halaman penghapusan akun, atau dokumen hukum.",
+            },
+          ],
+        },
+        packageB: {
+          badge: {
+            en: "Package B",
+            id: "Paket B",
+          },
+          title: {
+            en: "Managed Production Submission",
+            id: "Pengajuan Produksi Terkelola",
+          },
+          price: {
+            en: "IDR 35,000,000 per application",
+            id: "IDR 35.000.000 per aplikasi",
+          },
+          description: {
+            en: "This package is suitable for clients who want support from the setup stage until the application is successfully submitted and reaches the production stage.",
+            id: "Paket ini cocok untuk klien yang menginginkan dukungan dari tahap penyiapan hingga aplikasi berhasil diajukan dan mencapai tahap produksi.",
+          },
+          paymentScheme: [
+            {
+              en: "IDR 15,000,000 paid upfront.",
+              id: "IDR 15.000.000 dibayar di awal.",
+            },
+            {
+              en: "IDR 10,000,000 paid after closed testing begins.",
+              id: "IDR 10.000.000 dibayar setelah pengujian tertutup dimulai.",
+            },
+            {
+              en: "IDR 10,000,000 paid after production approval.",
+              id: "IDR 10.000.000 dibayar setelah persetujuan produksi.",
+            },
+          ],
+          scope: [
+            {
+              en: "Set up the app in Google Play Console.",
+              id: "Menyiapkan aplikasi di Google Play Console.",
+            },
+            {
+              en: "Check the package name or applicationId.",
+              id: "Memeriksa nama paket atau applicationId.",
+            },
+            {
+              en: "Upload the Android app bundle.",
+              id: "Mengunggah paket aplikasi Android.",
+            },
+            {
+              en: "Set up internal testing.",
+              id: "Menyiapkan pengujian internal.",
+            },
+            {
+              en: "Complete forms based on data provided by the client.",
+              id: "Melengkapi formulir berdasarkan data yang disediakan oleh client.",
+            },
+            {
+              en: "Complete the app category and declarations.",
+              id: "Melengkapi kategori aplikasi dan deklarasi yang diperlukan.",
+            },
+            {
+              en: "Input the privacy policy link.",
+              id: "Memasukkan tautan kebijakan privasi.",
+            },
+            {
+              en: "Input the account deletion link.",
+              id: "Memasukkan tautan penghapusan akun.",
+            },
+            {
+              en: "Input the store contact details.",
+              id: "Memasukkan detail kontak aplikasi.",
+            },
+            {
+              en: "Set up closed testing.",
+              id: "Menyiapkan pengujian tertutup.",
+            },
+            {
+              en: "Provide and coordinate 12-20 testers.",
+              id: "Menyediakan dan mengoordinasikan 12-20 penguji.",
+            },
+            {
+              en: "Submit the production access request.",
+              id: "Mengajukan permintaan akses produksi.",
+            },
+            {
+              en: "Read and analyze rejections from Google Play.",
+              id: "Membaca dan menganalisis penolakan dari Google Play.",
+            },
+            {
+              en: "Prepare solution recommendations for the developer/client.",
+              id: "Siapkan rekomendasi solusi untuk pengembang/klien.",
+            },
+            {
+              en: "Re-upload the bundle after it has been fixed by the developer.",
+              id: "Mengunggah ulang paket aplikasi setelah diperbaiki oleh pengembang.",
+            },
+            {
+              en: "Follow up until the application successfully enters production.",
+              id: "Melakukan tindak lanjut hingga aplikasi berhasil masuk ke tahap produksi.",
+            },
+          ],
+          limitations: [
+            {
+              en: "Prof. NOTA Inc. does not create or fix the application source code.",
+              id: "Prof. NOTA Inc. tidak membuat atau memperbaiki kode sumber aplikasi.",
+            },
+            {
+              en: "Prof. NOTA Inc. does not create legal documents, privacy policies, or account deletion pages.",
+              id: "Prof. NOTA Inc. tidak membuat dokumen hukum, kebijakan privasi, atau halaman penghapusan akun.",
+            },
+            {
+              en: "Prof. NOTA Inc. is not responsible for transactions, refunds, customer support, or user data.",
+              id: "Prof. NOTA Inc. tidak bertanggung jawab atas transaksi, pengembalian dana, dukungan pelanggan, atau data pengguna.",
+            },
+            {
+              en: "Prof. NOTA Inc. does not guarantee approval if the application violates Google Play policies.",
+              id: "Prof. NOTA Inc. tidak menjamin persetujuan jika aplikasi melanggar kebijakan Google Play.",
+            },
+            {
+              en: "All technical fixes are the responsibility of the developer/client.",
+              id: "Semua perbaikan teknis adalah tanggung jawab pengembang/klien.",
+            },
+            {
+              en: "All legal and business information must be provided by the client.",
+              id: "Semua informasi hukum dan bisnis harus disediakan oleh klien.",
+            },
+            {
+              en: "If the application poses a risk to the publisher account, the process may be delayed, stopped, or rejected.",
+              id: "Jika aplikasi menimbulkan risiko bagi akun penerbit, prosesnya dapat ditunda, dihentikan, atau ditolak.",
+            },
+          ],
+        },
+        packageC: {
+          badge: {
+            en: "Package C",
+            id: "Paket C",
+          },
+          title: {
+            en: "Stage-Based Publishing Package",
+            id: "Paket Penerbitan Bertahap",
+          },
+          price: {
+            en: "IDR 40,000,000 per application",
+            id: "IDR 40.000.000 per aplikasi",
+          },
+          description: {
+            en: "This package is suitable for cooperation that requires more structured work stages and payment milestones.",
+            id: "Paket ini cocok untuk kerja sama yang membutuhkan tahapan kerja dan pembayaran bertahap yang lebih terstruktur.",
+          },
+          stages: [
+            {
+              stage: "1",
+              workItem: {
+                en: "Application setup and onboarding",
+                id: "Pengaturan dan orientasi aplikasi",
+              },
+              fee: {
+                en: "IDR 7,500,000",
+                id: "IDR 7.500.000",
+              },
+            },
+            {
+              stage: "2",
+              workItem: {
+                en: "Internal testing setup",
+                id: "Pengaturan pengujian internal",
+              },
+              fee: {
+                en: "IDR 5,000,000",
+                id: "IDR 5.000.000",
+              },
+            },
+            {
+              stage: "3",
+              workItem: {
+                en: "App content and Play Store setup",
+                id: "Penyiapan konten aplikasi dan Play Store",
+              },
+              fee: {
+                en: "IDR 5,000,000",
+                id: "IDR 5.000.000",
+              },
+            },
+            {
+              stage: "4",
+              workItem: {
+                en: "Closed testing operation",
+                id: "Operasi pengujian tertutup",
+              },
+              fee: {
+                en: "IDR 7,500,000",
+                id: "IDR 7.500.000",
+              },
+            },
+            {
+              stage: "5",
+              workItem: {
+                en: "Production access request",
+                id: "Permintaan akses produksi",
+              },
+              fee: {
+                en: "IDR 5,000,000",
+                id: "IDR 5.000.000",
+              },
+            },
+            {
+              stage: "6",
+              workItem: {
+                en: "Success fee after production approval",
+                id: "Biaya sukses setelah persetujuan produksi",
+              },
+              fee: {
+                en: "IDR 10,000,000",
+                id: "IDR 10.000.000",
+              },
+            },
+          ],
+          scope: [
+            {
+              en: "All work included in Package B.",
+              id: "Semua pekerjaan yang termasuk dalam Paket B.",
+            },
+            {
+              en: "Payments are more structured by stage.",
+              id: "Pembayaran lebih terstruktur berdasarkan tahapan.",
+            },
+            {
+              en: "Suitable for agencies, studios, startups, or owners of multiple applications.",
+              id: "Cocok untuk agensi, studio, perusahaan rintisan, atau pemilik beberapa aplikasi.",
+            },
+            {
+              en: "Each payment is connected to a clear deliverable.",
+              id: "Setiap pembayaran terhubung dengan hasil yang jelas.",
+            },
+          ],
+          limitations: [
+            {
+              en: "If a stage is delayed because the required data, documents, or technical revisions have not yet been provided by the client, the timeline will also be delayed and will not be considered a delay caused by Prof. NOTA Inc.",
+              id: "Jika suatu tahap tertunda karena data, dokumen, atau revisi teknis yang diperlukan belum disediakan oleh klien, tenggat waktu juga akan ikut tertunda dan tidak dianggap sebagai keterlambatan dari Prof. NOTA Inc.",
+            },
+          ],
+        },
+        packageD: {
+          badge: {
+            en: "Package D",
+            id: "Paket D",
+          },
+          title: {
+            en: "Official Publishing Operator",
+            id: "Operator Penerbitan Resmi",
+          },
+          price: {
+            en: "IDR 50,000,000 - IDR 75,000,000 per application",
+            id: "IDR 50.000.000 - IDR 75.000.000 per aplikasi",
+          },
+          description: {
+            en: "This package is suitable for clients who need Prof. NOTA Inc. to act as the official publishing operator for third-party applications.",
+            id: "Paket ini cocok untuk klien yang membutuhkan Prof. NOTA Inc. sebagai operator penerbitan resmi untuk aplikasi pihak ketiga.",
+          },
+          scope: [
+            {
+              en: "All work included in Package B and Package C.",
+              id: "Semua pekerjaan yang termasuk dalam Paket B dan Paket C.",
+            },
+            {
+              en: "Review application risk before acceptance.",
+              id: "Meninjau risiko aplikasi sebelum diterima.",
+            },
+            {
+              en: "Manage the application status in the publisher account.",
+              id: "Mengelola status aplikasi di akun penerbit.",
+            },
+            {
+              en: "Monitor Play Console until the application is stable.",
+              id: "Memantau Play Console sampai aplikasi stabil.",
+            },
+            {
+              en: "Coordinate more intensively with the developer/client.",
+              id: "Berkoordinasi lebih intensif dengan pengembang/klien.",
+            },
+            {
+              en: "Handle several rejection cycles within a reasonable scope.",
+              id: "Menangani beberapa siklus penolakan dalam ruang lingkup yang wajar.",
+            },
+            {
+              en: "Document the submission and approval process.",
+              id: "Mendokumentasikan proses pengajuan dan persetujuan.",
+            },
+            {
+              en: "Provide further compliance recommendations if there is a policy notice from Google Play.",
+              id: "Memberikan rekomendasi kepatuhan lanjutan jika ada pemberitahuan kebijakan dari Google Play.",
+            },
+          ],
+          limitations: [
+            {
+              en: "A written agreement is required.",
+              id: "Wajib ada perjanjian tertulis.",
+            },
+            {
+              en: "A publisher account protection clause is required.",
+              id: "Wajib ada klausul perlindungan akun penerbit.",
+            },
+            {
+              en: "Prof. NOTA Inc. may reject high-risk applications.",
+              id: "Prof. NOTA Inc. dapat menolak aplikasi berisiko tinggi.",
+            },
+            {
+              en: "Applications that violate the law, deceive users, misuse data, or risk causing account suspension will not be accepted.",
+              id: "Aplikasi yang melanggar hukum, menipu pengguna, menyalahgunakan data, atau berisiko menyebabkan suspensi akun tidak akan diterima.",
+            },
+            {
+              en: "Application revenue does not go to Prof. NOTA Inc. unless there is a separate agreement.",
+              id: "Pendapatan aplikasi tidak masuk ke Prof. NOTA Inc. kecuali ada perjanjian terpisah.",
+            },
+          ],
+        },
+      };
+
+      const processes = [
+        {
+          title: {
+            en: "App Setup",
+            id: "Persiapan",
+          },
+          description: {
+            en: "We set up app records, access, and baseline compliance.",
+            id: "Kami menyiapkan data aplikasi, akses, dan kepatuhan dasar.",
+          },
+        },
+        {
+          title: {
+            en: "Testing",
+            id: "Pengujian",
+          },
+          description: {
+            en: "We coordinate internal and closed testing workflows.",
+            id: "Kami mengoordinasikan alur kerja pengujian internal dan tertutup.",
+          },
+        },
+        {
+          title: {
+            en: "Store Setup",
+            id: "Penyiapan Store",
+          },
+          description: {
+            en: "We complete store listing, assets, and required forms.",
+            id: "Kami melengkapi informasi, aset, dan formulir yang diperlukan di Play Store.",
+          },
+        },
+        {
+          title: {
+            en: "Production Access",
+            id: "Akses Produksi",
+          },
+          description: {
+            en: "We prepare the production access request and final checks.",
+            id: "Kami menyiapkan permintaan akses produksi dan pemeriksaan akhir.",
+          },
+        },
+        {
+          title: {
+            en: "Release & Follow-Up",
+            id: "Rilis & Tindak Lanjut",
+          },
+          description: {
+            en: "We publish, monitor, and support follow-up submission needs.",
+            id: "Kami menerbitkan, memantau, dan mendukung pengajuan lanjutan.",
+          },
+        },
+      ];
+
+      const additional = [
+        {
+          title: {
+            en: "App Marketing and Growth Services",
+            id: "Layanan Pemasaran dan Pertumbuhan",
+          },
+          description: {
+            en: "This service includes application growth support, including:",
+            id: "Layanan ini mencakup dukungan pertumbuhan aplikasi, termasuk:",
+          },
+          item1: {
+            en: "App Store Optimization (ASO)",
+            id: "Pengoptimalan Toko Aplikasi",
+          },
+          item2: {
+            en: "User Acquisition (UA)",
+            id: "Akuisisi Pengguna",
+          },
+          item3: {
+            en: "Global Expansion",
+            id: "Ekspansi Global",
+          },
+          note: {
+            en: "Discuss deeper scope, timeline, and pricing.",
+            id: "Diskusikan cakupan, tenggat waktu, dan biaya lebih lanjut.",
+          },
+          symbol: "◈",
+        },
+        {
+          title: {
+            en: "Operational and Performance Services",
+            id: "Layanan Operasional dan Performa",
+          },
+          description: {
+            en: "This service includes operational and performance support, including:",
+            id: "Layanan ini mencakup dukungan operasional dan kinerja, termasuk:",
+          },
+          item1: {
+            en: "Performance Monitoring",
+            id: "Pemantauan Performa",
+          },
+          item2: {
+            en: "Customer Engagement",
+            id: "Keterlibatan Pelanggan",
+          },
+          item3: {
+            en: "Monetization Management",
+            id: "Manajemen Monetisasi",
+          },
+          note: {
+            en: "Discuss deeper scope, timeline, and pricing.",
+            id: "Diskusikan cakupan, tenggat waktu, dan biaya lebih lanjut.",
+          },
+          symbol: "◈",
+        },
+        {
+          title: {
+            en: "Specialized Enterprise Apps Services",
+            id: "Layanan Aplikasi Perusahaan Khusus",
+          },
+          description: {
+            en: "This service includes specialized support for larger-scale usage, including:",
+            id: "Layanan ini mencakup dukungan khusus untuk penggunaan skala besar, termasuk:",
+          },
+          item1: {
+            en: "Managed Google Play",
+            id: "Pengelolaan Google Play",
+          },
+          item2: {
+            en: "Compliance Strategy",
+            id: "Strategi Kepatuhan",
+          },
+          item3: {
+            en: "User Privacy Policy",
+            id: "Kebijakan Privasi",
+          },
+          note: {
+            en: "Discuss deeper scope, timeline, and pricing.",
+            id: "Diskusikan cakupan, tenggat waktu, dan biaya lebih lanjut.",
+          },
+          symbol: "◈",
+        },
+      ];
+
+      const clientScope = [
+        {
+          en: "App bundle that is ready for release, signed, and has a fixed app name.",
+          id: "Aplikasi yang siap rilis, ditandatangani, dan nama aplikasi yang tetap.",
+        },
+        {
+          en: "App assets: icon, screenshots, feature graphic, and descriptions.",
+          id: "Aset aplikasi: ikon, tangkapan layar, grafik unggulan, dan deskripsi.",
+        },
+        {
+          en: "App contact email, phone number, and official website.",
+          id: "Email kontak aplikasi, nomor telepon, dan situs web resmi.",
+        },
+        {
+          en: "Information about the data collected by the app.",
+          id: "Informasi tentang data yang dikumpulkan oleh aplikasi.",
+        },
+        {
+          en: "Information about login, payment, booking, refund, and customer support.",
+          id: "Informasi tentang login, pembayaran, pengembalian dana, dan dukungan.",
+        },
+        {
+          en: "Privacy policy link and user account deletion link if applicable.",
+          id: "Tautan kebijakan privasi dan penghapusan akun, jika diperlukan.",
+        },
+        {
+          en: "Legal and business information required by Google Play.",
+          id: "Informasi hukum dan bisnis yang diwajibkan oleh Google Play.",
+        },
+        {
+          en: "Technical revisions or fixes if the app is rejected by Google.",
+          id: "Revisi atau perbaikan teknis jika aplikasi ditolak oleh Google.",
+        },
+        {
+          en: "A statement that the app is legal and ready to be published.",
+          id: "Pernyataan bahwa aplikasi legal dan siap dipublikasikan.",
+        },
+      ];
+
+      const ourScope = [
+        {
+          en: "We manage the submission and publishing workflow end-to-end.",
+          id: "Kami mengelola alur kerja pengajuan dan penerbitan dari awal hingga akhir.",
+        },
+        {
+          en: "We coordinate testing, compliance, and Play Console communication.",
+          id: "Kami mengoordinasikan pengujian, kepatuhan, dan komunikasi Play Console.",
+        },
+        {
+          en: "We analyze rejections and support resubmission.",
+          id: "Kami menganalisis penolakan dan mendukung proses pengajuan ulang.",
+        },
+        {
+          en: "We do not develop the app or modify source code.",
+          id: "Kami tidak mengembangkan aplikasi atau mengubah kode sumber.",
+        },
+        {
+          en: "We do not assume liability for app content, business, or user data.",
+          id: "Kami tidak bertanggung jawab atas konten, bisnis, atau data pengguna.",
+        },
+      ];
+
+      const iconSvg = (symbol) =>
+        `<div class="icon" aria-hidden="true"><span style="font-size:24px;font-weight:900">${symbol}</span></div>`;
+      const checkLi = (text) =>
+        `<li><span class="check">✓</span><span>${text}</span></li>`;
+
+      const checkLiI18n = (item) => `
+        <li>
+          <span class="check">✓</span>
+            <span>
+              <span data-i18n="en">${item.en}</span>
+              <span data-i18n="id">${item.id}</span>
+            </span>
+        </li>
+      `;
+
+      const localize = (value, lang) => {
+        if (typeof value === "string") return value;
+        return value?.[lang] || value?.en || "";
+      };
+
+      const getCurrentLanguage = () =>
+        document.documentElement.classList.contains("lang-id") ? "id" : "en";
+
+      const renderNumberedList = (items, lang) =>
+        items.map((item) => `<li>${localize(item, lang)}</li>`).join("");
+
+      const renderPaymentScheme = (items = [], lang = getCurrentLanguage()) => {
+        if (!items.length) return "";
+
+        return `
+          <div class="package-modal-section">
+            <h3>${lang === "id" ? "Skema Pembayaran" : "Payment Scheme"}</h3>
+            <ol class="package-modal-list">
+              ${renderNumberedList(items, lang)}
+            </ol>
+          </div>
+        `;
+      };
+
+      const renderStageTable = (stages = [], lang = getCurrentLanguage()) => {
+        if (!stages.length) return "";
+
+        return `
+          <div class="package-modal-section">
+            <h3>${lang === "id" ? "Pembayaran Bertahap" : "Stage-Based Payment"}</h3>
+            <div class="package-modal-table-wrap">
+              <table class="package-modal-table">
+                <thead>
+                  <tr>
+                    <th>${lang === "id" ? "Tahap" : "Stage"}</th>
+                    <th>${lang === "id" ? "Item Pekerjaan" : "Work Item"}</th>
+                    <th>${lang === "id" ? "Biaya" : "Fee"}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${stages
+                    .map(
+                      (row) => `
+                        <tr>
+                          <td>${row.stage}</td>
+                          <td>${localize(row.workItem, lang)}</td>
+                          <td>${localize(row.fee, lang)}</td>
+                        </tr>
+                      `,
+                    )
+                    .join("")}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      };
+
+      document.getElementById("serviceGrid").innerHTML = services
+        .map(
+          ({ title, subtitle, symbol }) => `
+      <article class="card service-card">
+        ${iconSvg(symbol)}
+        <div>
+          <h3>
+            <span data-i18n="en">${title.en}</span>
+            <span data-i18n="id">${title.id}</span>
+          </h3>
+          <div class="small-id">
+            <span data-i18n="en">${subtitle.en}</span>
+            <span data-i18n="id">${subtitle.id}</span>
+          </div>
+        </div>
+      </article>
+    `,
+        )
+        .join("");
+
+      document.getElementById("packageGrid").innerHTML = packages
+        .map(
+          (pkg) => `
+      <article class="card package-card ${pkg.featured ? "featured" : ""}">
+        <span class="badge">
+          <span data-i18n="en">${pkg.label.en}</span>
+          <span data-i18n="id">${pkg.label.id}</span>
+        </span>
+
+        <h3>
+          <span data-i18n="en">${pkg.title.en}</span>
+          <span data-i18n="id">${pkg.title.id}</span>
+        </h3>
+
+        <div class="price brand">
+          <small>IDR</small>
+          <span data-i18n="en">${pkg.price.en}</span>
+          <span data-i18n="id">${pkg.price.id}</span>
+        </div>
+
+        <ul>${pkg.bullets.map(checkLiI18n).join("")}</ul>
+
+        <button
+          class="btn package-detail-btn"
+          type="button"
+          data-package-key="${pkg.key}">
+            <span data-i18n="en">Choose ${pkg.label.en}</span>
+            <span data-i18n="id">Pilih ${pkg.label.id}</span>
+        </button>
+      </article>
+    `,
+        )
+        .join("");
+
+      const packageDetailModal = document.getElementById("packageDetailModal");
+      const closePackageDetailModal = document.getElementById(
+        "closePackageDetailModal",
+      );
+
+      const packageDetailBadge = document.getElementById("packageDetailBadge");
+      const packageDetailTitle = document.getElementById("packageDetailTitle");
+      const packageDetailPrice = document.getElementById("packageDetailPrice");
+      const packageDetailDescription = document.getElementById(
+        "packageDetailDescription",
+      );
+      const packagePaymentScheme = document.getElementById(
+        "packagePaymentScheme",
+      );
+      const packageStageTable = document.getElementById("packageStageTable");
+      const packageDetailScope = document.getElementById("packageDetailScope");
+      const packageDetailLimitations = document.getElementById(
+        "packageDetailLimitations",
+      );
+
+      let activePackageKey = null;
+
+      function renderPackageModalContent(packageKey) {
+        const detail = packageDetails[packageKey];
+
+        if (!detail) return;
+
+        const lang = getCurrentLanguage();
+
+        packageDetailBadge.textContent = localize(detail.badge, lang);
+        packageDetailTitle.textContent = localize(detail.title, lang);
+        packageDetailPrice.innerHTML = `<small>${lang === "id" ? "HARGA" : "PRICE"}</small>${localize(detail.price, lang)}`;
+        packageDetailDescription.textContent = localize(
+          detail.description,
+          lang,
+        );
+
+        packagePaymentScheme.innerHTML = renderPaymentScheme(
+          detail.paymentScheme,
+          lang,
+        );
+        packageStageTable.innerHTML = renderStageTable(detail.stages, lang);
+
+        packageDetailScope.innerHTML = renderNumberedList(detail.scope, lang);
+        packageDetailLimitations.innerHTML = renderNumberedList(
+          detail.limitations,
+          lang,
+        );
+      }
+
+      function openPackageModal(packageKey) {
+        activePackageKey = packageKey;
+        renderPackageModalContent(packageKey);
+
+        packageDetailModal.classList.add("is-open");
+        packageDetailModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+
+      function closePackageModal() {
+        packageDetailModal.classList.remove("is-open");
+        packageDetailModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        activePackageKey = null;
+      }
+
+      document.querySelectorAll(".package-detail-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          openPackageModal(button.dataset.packageKey);
+        });
+      });
+
+      closePackageDetailModal.addEventListener("click", closePackageModal);
+
+      document
+        .getElementById("packageDetailContact")
+        .addEventListener("click", closePackageModal);
+
+      packageDetailModal.addEventListener("click", function (event) {
+        if (event.target === packageDetailModal) {
+          closePackageModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          packageDetailModal.classList.contains("is-open")
+        ) {
+          closePackageModal();
+        }
+      });
+
+      document.getElementById("processGrid").innerHTML = processes
+        .map(({ title, description }, index) => {
+          const stepNumber = String(index + 1).padStart(2, "0");
+
+          return `
+      <article class="card step-card">
+        <div class="step-no">${index + 1}</div>
+        <h3>
+          <span data-i18n="en">${title.en}</span>
+          <span data-i18n="id">${title.id}</span>
+        </h3>
+        <div class="small-id">
+          <span data-i18n="en">Step ${stepNumber}</span>
+          <span data-i18n="id">Tahap ${stepNumber}</span>
+        </div>
+        <p class="small-id" style="margin-top:14px">
+          <span data-i18n="en">${description.en}</span>
+          <span data-i18n="id">${description.id}</span>
+        </p>
+      </article>
+    `;
+        })
+        .join("");
+
+      document.getElementById("additionalGrid").innerHTML = additional
+        .map(
+          ({ title, description, item1, item2, item3, note, symbol }) => `
+      <article class="card additional-card">
+        ${iconSvg(symbol)}
+        <div>
+          <h3>
+            <span data-i18n="en">${title.en}</span>
+            <span data-i18n="id">${title.id}</span>
+          </h3>
+          <div class="small-id">
+            <p data-i18n="en">${description.en}</p>
+            <p data-i18n="id">${description.id}</p>
+            <ul>
+              <li>
+                <span data-i18n="en">${item1.en}</span>
+                <span data-i18n="id">${item1.id}</span>
+              </li>
+              <li>
+                <span data-i18n="en">${item2.en}</span>
+                <span data-i18n="id">${item2.id}</span>
+              </li>
+              <li>
+                <span data-i18n="en">${item3.en}</span>
+                <span data-i18n="id">${item3.id}</span>
+              </li>
+            </ul>
+            <p data-i18n="en">${note.en}</p>
+            <p data-i18n="id">${note.id}</p>
+          </div>
+        </div>
+      </article>
+    `,
+        )
+        .join("");
+
+      document.getElementById("clientScope").innerHTML = clientScope
+        .map(checkLiI18n)
+        .join("");
+      document.getElementById("ourScope").innerHTML = ourScope
+        .map(checkLiI18n)
+        .join("");
+
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem("pnota-theme");
+      if (savedTheme) root.dataset.theme = savedTheme;
+
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        localStorage.setItem("pnota-theme", next);
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          document
+            .querySelectorAll(".lang-btn")
+            .forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          root.classList.toggle("lang-id", lang === "id");
+          root.lang = lang;
+
+          updateCopyrightDate();
+
+          if (
+            activePackageKey &&
+            packageDetailModal.classList.contains("is-open")
+          ) {
+            renderPackageModalContent(activePackageKey);
+          }
+        });
+      });
+
+      const readMoreModal = document.getElementById("readMoreModal");
+      const openReadMoreModal = document.getElementById("openReadMoreModal");
+      const closeReadMoreModal = document.getElementById("closeReadMoreModal");
+
+      function openModal() {
+        readMoreModal.classList.add("is-open");
+        readMoreModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeModal() {
+        readMoreModal.classList.remove("is-open");
+        readMoreModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      }
+
+      openReadMoreModal.addEventListener("click", openModal);
+      closeReadMoreModal.addEventListener("click", closeModal);
+
+      readMoreModal.addEventListener("click", function (event) {
+        if (event.target === readMoreModal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          readMoreModal.classList.contains("is-open")
+        ) {
+          closeModal();
+        }
+      });
+
+      const ourScopeModal = document.getElementById("ourScopeModal");
+      const openOurScopeModalButton =
+        document.getElementById("openOurScopeModal");
+      const closeOurScopeModalButton =
+        document.getElementById("closeOurScopeModal");
+
+      function openOurScopeModal() {
+        ourScopeModal.classList.add("is-open");
+        ourScopeModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeOurScopeModal() {
+        ourScopeModal.classList.remove("is-open");
+        ourScopeModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      }
+
+      openOurScopeModalButton.addEventListener("click", openOurScopeModal);
+      closeOurScopeModalButton.addEventListener("click", closeOurScopeModal);
+
+      ourScopeModal.addEventListener("click", function (event) {
+        if (event.target === ourScopeModal) {
+          closeOurScopeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          ourScopeModal.classList.contains("is-open")
+        ) {
+          closeOurScopeModal();
+        }
+      });
+
+      const retainerModal = document.getElementById("retainerModal");
+      const openRetainerModalButton =
+        document.getElementById("openRetainerModal");
+      const closeRetainerModalButton =
+        document.getElementById("closeRetainerModal");
+
+      function openRetainerModal() {
+        retainerModal.classList.add("is-open");
+        retainerModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeRetainerModal() {
+        retainerModal.classList.remove("is-open");
+        retainerModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      }
+
+      openRetainerModalButton.addEventListener("click", openRetainerModal);
+      closeRetainerModalButton.addEventListener("click", closeRetainerModal);
+
+      retainerModal.addEventListener("click", function (event) {
+        if (event.target === retainerModal) {
+          closeRetainerModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          retainerModal.classList.contains("is-open")
+        ) {
+          closeRetainerModal();
+        }
+      });
+
+      const currentMonthYear = document.getElementById("currentMonthYear");
+
+      function updateCopyrightDate() {
+        const isIndonesian =
+          document.documentElement.classList.contains("lang-id");
+
+        currentMonthYear.textContent = new Intl.DateTimeFormat(
+          isIndonesian ? "id-ID" : "en-US",
+          {
+            month: "long",
+            year: "numeric",
+            timeZone: "Asia/Jakarta",
+          },
+        ).format(new Date());
+      }
+
+      updateCopyrightDate();
+    </script>
+  </body>
+</html>
